@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
         double collectiveTime = 0;
         startTimer(start); 
         
-        MPI_File_open(MPI_COMM_WORLD, "fileIndiv", MPI_MODE_CREATE | MPI_MODE_RDWR |MPI_MODE_DELETE_ON_CLOSE , MPI_INFO_NULL, &fhIndividual);
+        MPI_File_open(MPI_COMM_WORLD, "fileIndiv", MPI_MODE_CREATE | MPI_MODE_RDWR |MPI_MODE_DELETE_ON_CLOSE , info, &fhIndividual);
         MPI_File_seek(fhIndividual, offset, MPI_SEEK_SET);
         stopTimer(start, open);
         for(int field = 0; field < numFields; field++)
@@ -193,7 +193,7 @@ int main(int argc, char *argv[])
         int64_t temp = numFields*count;
         startTimer(start); 
         
-        MPI_File_open(MPI_COMM_WORLD, "fileAll", MPI_MODE_CREATE | MPI_MODE_RDWR |MPI_MODE_DELETE_ON_CLOSE , MPI_INFO_NULL, &fhFull);
+        MPI_File_open(MPI_COMM_WORLD, "fileAll", MPI_MODE_CREATE | MPI_MODE_RDWR |MPI_MODE_DELETE_ON_CLOSE , info, &fhFull);
         MPI_File_seek(fhFull, offset, MPI_SEEK_SET);
         stopTimer(start, open);
         startTimer(start); 
