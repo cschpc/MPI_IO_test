@@ -233,13 +233,15 @@ int main(int argc, char *argv[])
     MPI_Finalize();
     if(rank == 0)
     {
-        std::cout << rank << " Writing fields individually, " << totalSize*numFields*sizeof(int) << " bytes " << std::endl;
+        std::cout << rank << " Writing fields combined, " << totalSize*numFields*sizeof(int) << " bytes " << std::endl;
         std::cout << "max " << *std::max_element(speedV.begin(), speedV.end()) << " MBytes/s" << std::endl;
         std::cout << "min " << *std::min_element(speedV.begin(), speedV.end()) << " MBytes/s" << std::endl;
         std::cout << "Collective time max: " << *std::max_element(collective.begin(), collective.end()) << " s" << std::endl;
         std::cout << "Collective time min: " << *std::min_element(collective.begin(), collective.end()) << " s" << std::endl;
         std::cout << "File open time max: " << *std::max_element(open.begin(), open.end()) << " s" << std::endl;
         std::cout << "File open time min: " << *std::min_element(open.begin(), open.end()) << " s" << std::endl;
+        std::cout << "Data type create max: " << *std::max_element(fileTypeCreate.begin(), fileTypeCreate.end()) << " s" << std::endl;
+        std::cout << "Data type create min: " << *std::min_element(fileTypeCreate.begin(), fileTypeCreate.end()) << " s" << std::endl;
     }
     exit(0);
 }
