@@ -1,5 +1,5 @@
 /*
-    Copyright 2017 Fredrik Robertsen
+    Copyright 2017 CSC (Fredrik Robertsen)
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
     files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     int64_t startOffset = 0;
     int maxSize = atoi(argv[1]);
     int minSize = atoi(argv[2]);
-    bool flush = atoi(argv[3]);
+    bool flush = atoi(argv[4]);
     MPI_File fhIndividual;
     MPI_File fhFull;
     MPI_Status status;
@@ -75,7 +75,6 @@ int main(int argc, char *argv[])
         std::string value;
         std::getline(ss, name, '=');
         std::getline(ss, value);
-        std::cout << name << value << std::endl;
         MPI_Info_set(info, name.c_str(), value.c_str());
     }
 
